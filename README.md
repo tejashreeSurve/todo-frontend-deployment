@@ -5,11 +5,40 @@
 3. Push the code
    a. create gitignore if not exits
    b. Add all the file which should not be push(.env, node_modules)
-4. Create account on Render.com 
-5. Step to deploy
-
-
-
+4. Create account on Render.com
+5. Deploy the backend on render
+6. Step to deploy for front-end
+   - Push your code on git-hub
+   - Login-in to Netlify
+   - Add new project
+   - import existing project
+   - select the github repo
+   - Setup build command
+   - select dist/ build as publish directory
+   - Setup Env manully for your local env
+7. Setup CI/CD pipeline configuragtion
+   - Create .github/workflows/ci-cd.yaml file
+   - All all the rules
+     - Pipeline name
+     - push & pull_request
+     - Setup Job name
+     - Define the runner ubuntu
+     - Checkout code to github runner
+     - Install pnpm lastest version which is there in your local
+     - Install node and link pnpm cache
+     - Install dependencies - pnpm install
+     - pnpm run lint
+     - pnpm run test
+     - pnpm run build
+   - Push that to github
+   - Action will run on github, if fails then recheck it an make it green
+   - Now whenever you raised the PR, CI/CD pipeline run and if it pass then allow to merge
+8. Setting for Branch Protection
+   - Go to repo Setting
+   - Go to branches
+   - Select Branch protection
+   - Check "Require a pull request before merging".
+   - Check "Require status checks to pass before merging" and search for your GitHub Action name(which is Job name).
 
 # Steps - todo-frontend
 
@@ -22,9 +51,8 @@
 7. Define the URL -> since it is VITE -> VITE_API_URL=http://localhost:backend_port
 8. Install axios -> pnpm add axios (as normal dependencies)
 9. Define API_URL in App.js -> since we are fetch the URL from env file ->
-    using import.meta.env.(env_define_variable)
+   using import.meta.env.(env_define_variable)
 10. Write a code to fetch (API class)
-
 
 # List - Issue faced while doing all this process
 
@@ -47,5 +75,5 @@
 
 4. If some file are pushed which should be on github then run this command
    a. git rm --cached .env.development .env.production -> Tells Git to remove a file from the repository not from local
-   b. git commit -m "somemessages" 
+   b. git commit -m "somemessages"
    c. git push
