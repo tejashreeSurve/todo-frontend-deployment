@@ -39,9 +39,9 @@ jobs:
       - name: Run Linter
         run: pnpm run lint
 
-      # 7. Quality Gate: Tests
-      - name: Run Unit Tests
-        run: pnpm test
+      # 7. Quality Gate: Tests - Since we don't have any test
+      # - name: Run Unit Tests
+      #   run: pnpm test
 
       # 8. The Build: Ensure the project compiles
       - name: Build Project
