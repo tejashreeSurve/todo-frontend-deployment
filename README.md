@@ -6,6 +6,7 @@
    a. create gitignore if not exits
    b. Add all the file which should not be push(.env, node_modules)
 4. Create account on Render.com 
+5. Step to deploy
 
 
 
