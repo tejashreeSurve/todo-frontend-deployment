@@ -1,0 +1,45 @@
+name: React CI/CD Pipeline
+# 1. The Trigger: Run this whenever code is pushed to 'main' or a PR is opened
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 2. Setup: Get the code from GitHub onto the runner machine
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 3. Environment: Install pnpm first
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Match the version you use locally
+
+      # 4. Environment: Install Node.js and link pnpm cache
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm" # <--- IMPORTANT: Tells GitHub to cache pnpm store
+
+      # 5. Install Dependencies
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile # <--- This is the pnpm version of 'npm ci'
+
+      # 6. Quality Gate: Linting
+      - name: Run Linter
+        run: pnpm run lint
+
+      # 7. Quality Gate: Tests
+      - name: Run Unit Tests
+        run: pnpm test
+
+      # 8. The Build: Ensure the project compiles
+      - name: Build Project
+        run: pnpm run build
