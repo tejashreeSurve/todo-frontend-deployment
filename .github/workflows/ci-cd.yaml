@@ -22,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 8 # Match the version you use locally
+          version: 10.25.0 # Match the version you use locally
 
       # 4. Environment: Install Node.js and link pnpm cache
       - name: Setup Node.js
