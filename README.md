@@ -1,5 +1,15 @@
 # Steps - Getting Started with Deployment Process
 
+1. Install git in system
+2. Create 2 repos on Github
+3. Push the code
+   a. create gitignore if not exits
+   b. Add all the file which should not be push(.env, node_modules)
+4. Create account on Render.com 
+
+
+
+
 # Steps - todo-frontend
 
 1. Check node version -> node -v
@@ -33,3 +43,8 @@
    b. Dev server sends your code to browser
    c. Browser runs your ReactJS code -> No Node object(like process) exist.
    d. Vite replace import.meta.env before sending the code -> your code can safely access env vars.
+
+4. If some file are pushed which should be on github then run this command
+   a. git rm --cached .env.development .env.production -> Tells Git to remove a file from the repository not from local
+   b. git commit -m "somemessages" 
+   c. git push
