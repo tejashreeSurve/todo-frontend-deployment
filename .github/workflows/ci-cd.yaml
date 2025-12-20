@@ -15,6 +15,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Debug File System
+        run: ls -R
+
       # 3. Environment: Install pnpm first
       - name: Install pnpm
         uses: pnpm/action-setup@v3
