@@ -38,7 +38,8 @@
    - Go to branches
    - Select Branch protection
    - Check "Require a pull request before merging".
-   - Check "Require status checks to pass before merging" and search for your GitHub Action name(which is Job name).
+   - Check "Require status checks to pass before merging" and search for your GitHub Action name(which is Job name). 
+   - But since I am owner of repo I will allow since it will bypassed the rule but we can also force to  restrict even admin by checking "Do not allow bypassing the above settings"(but I will be able to change the settings in GitHub)
 
 # Steps - todo-frontend
 
